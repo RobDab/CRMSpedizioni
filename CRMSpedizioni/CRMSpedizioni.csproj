@@ -123,12 +123,14 @@
     <Compile Include="Controllers\BusinessCustomerController.cs" />
     <Compile Include="Controllers\PrivateCustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SpedizioniController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BusinessCustomer.cs" />
     <Compile Include="Models\ConnControl.cs" />
     <Compile Include="Models\PrivateCustomer.cs" />
+    <Compile Include="Models\Spedizione.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +168,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\PrivateCustomers\AddCustomer.cshtml" />
+    <Content Include="Views\PrivateCustomers\GetPrivateCustomers.cshtml" />
+    <Content Include="Views\Spedizioni\CreateSpedizione.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

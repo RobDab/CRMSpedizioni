@@ -27,6 +27,45 @@ namespace CRMSpedizioni.Models
         [Display(Name = "Mail o Tel")]
         public string Contact { get; set; }
 
+        public static List<PrivateCustomer> GetPrivates()
+        {
+            SqlConnection con = ConnControl.DBConnection;
+            con.Open();
+
+            List<PrivateCustomer> currentList = new List<PrivateCustomer>();
+            try
+            {
+                SqlDataReader reader = ConnControl.GetReader("SELECT * FROM ClientiPrivatiTab", con);
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        PrivateCustomer current = new PrivateCustomer()
+                        {
+                            CustomerID = Convert.ToInt32(reader["CustomerID"]),
+                            Nome = reader["Nome"].ToString(),
+                            Cognome = reader["Cognome"].ToString(),
+                            PostalCode = reader["CAP"].ToString(),
+                            FiscalCode = reader["CF"].ToString(),
+                            Address = reader["Indirizzo"].ToString(),
+                            Contact = reader["Contatto"].ToString()
+                        };
+
+                        currentList.Add(current);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            con.Close();
+            return currentList;
+        }
+
+
         public static void AddCustomer(PrivateCustomer current)
         {
             SqlConnection con = ConnControl.DBConnection;
@@ -47,6 +86,7 @@ namespace CRMSpedizioni.Models
             }
             catch
             {
+                
                 con.Close();
             }
             con.Close();

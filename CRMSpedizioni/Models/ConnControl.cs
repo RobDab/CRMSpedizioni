@@ -21,9 +21,9 @@ namespace CRMSpedizioni.Models
             }
         }
 
-        public static SqlDataReader GetReader(string CmdTxt)
+        public static SqlDataReader GetReader(string CmdTxt, SqlConnection con)
         {
-            SqlCommand cmd = new SqlCommand(CmdTxt, DBConnection);
+            SqlCommand cmd = new SqlCommand(CmdTxt, con);
             
 
             SqlDataReader reader = cmd.ExecuteReader();

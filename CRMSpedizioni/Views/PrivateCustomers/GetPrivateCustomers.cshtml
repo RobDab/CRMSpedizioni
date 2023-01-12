@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CRMSpedizioni.Models.PrivateCustomer>
+
+@{
+    ViewBag.Title = "GetPrivateCustomers";
+}
+
+<h2>Gestione Clienti Privati</h2>
+@if(ViewBag.ErrorMsg != null)
+            {
+                <p>@ViewBag.ErrorMsg</p>
+            }
+<p>
+    @Html.ActionLink("Aggiungi Anagrafica Cliente", "AddCustomer", "PrivateCustomers")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cognome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FiscalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contact)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cognome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostalCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FiscalCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contact)
+        </td>
+        <td>
+            @Html.ActionLink("Spedizione", "CreateSpedizione", "Spedizioni", new { id=item.CustomerID }, null)
+            
+        </td>
+    </tr>
+}
+
+</table>

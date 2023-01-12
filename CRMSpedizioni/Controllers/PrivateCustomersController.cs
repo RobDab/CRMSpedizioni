@@ -9,6 +9,22 @@ namespace CRMSpedizioni.Controllers
 {
     public class PrivateCustomersController : Controller
     {   
+        public ActionResult GetPrivateCustomers()
+        {
+            List<PrivateCustomer> PrivateCustomersList = new List<PrivateCustomer>();
+            try
+            {
+                PrivateCustomersList = PrivateCustomer.GetPrivates();
+            }
+            catch(Exception ex)
+            {
+                ViewBag.ErrorMsg = ex.Message;
+                return View();
+            }
+
+            return View(PrivateCustomersList);
+        }
+
         // GET: Customers
         public ActionResult AddCustomer()
         {
@@ -23,7 +39,7 @@ namespace CRMSpedizioni.Controllers
         {
             PrivateCustomer.AddCustomer(current);
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("GetPrivateCustomers");
         }
     }
 }
